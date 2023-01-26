@@ -6,7 +6,6 @@ export default NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      secret: process.env.NEXTAUTH_SECRET,
       authorization: {
         params: {
           prompt: "consent",
@@ -16,4 +15,5 @@ export default NextAuth({
       },
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
 });
