@@ -15,7 +15,7 @@ export default function SecuredPage() {
 
         <button
           className="p-2 bg-red-500 text-white rounded-md"
-          onClick={() => signOut({ callbackUrl: process.env.NEXTAUTH_URL })}
+          onClick={() => signOut({ redirect: false })}
         >
           Sign Out
         </button>
