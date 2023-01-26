@@ -31,7 +31,7 @@ export default function Home() {
               className="bg-blue-500 rounded-md p-2 text-white"
               onClick={() =>
                 signIn("google", {
-                  callbackUrl: "http://localhost:3000/secured",
+                  callbackUrl: `${process.env.NEXTAUTH_URL}/secured`,
                 })
               }
             >
