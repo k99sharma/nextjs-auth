@@ -29,11 +29,7 @@ export default function Home() {
           ) : (
             <button
               className="bg-blue-500 rounded-md p-2 text-white"
-              onClick={() =>
-                signIn("google", {
-                  callbackUrl: `${process.env.NEXTAUTH_URL}/secured`,
-                })
-              }
+              onClick={() => signIn("google")}
             >
               Login
             </button>
