@@ -11,7 +11,7 @@ export default function SecuredPage() {
     return (
       <>
         <p>Sign in as {user.email}</p>
-        {/* {console.log(pd)} */}
+        {console.log(data)}
         <Link href="/">Go back</Link>
 
         <button

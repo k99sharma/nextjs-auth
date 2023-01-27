@@ -6,19 +6,23 @@ export default NextAuth({
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
-      profile: (profile) => {
-        return {
-          id: profile.id,
-          username: profile.login,
-          name: profile.name,
-          email: profile.email,
-        };
-      },
     }),
   ],
-  events: {
-    signIn: ({ user }) => {
-      console.info(user);
+  callbacks: {
+    jwt({ token, account, profile }) {
+      if (account) {
+        (token.accessToken = account.access_token),
+          (token.id = profile.id),
+          (token.username = profile.login);
+      }
+
+      return token;
+    },
+    session({ session, token }) {
+      session.user.id = token.id;
+      session.username = token.username;
+
+      return session;
     },
   },
   session: {
