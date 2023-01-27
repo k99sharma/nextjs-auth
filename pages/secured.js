@@ -1,21 +1,22 @@
 import Link from "next/link";
-import { useSession, signOut } from "next-auth/react";
+import { useSession, signOut, profile } from "next-auth/react";
 
 export default function SecuredPage() {
   const { data, status } = useSession();
-  const email = data?.user.email;
+  const user = data?.user;
 
   if (status === "loading") return <div>Loading....</div>;
 
   if (status === "authenticated") {
     return (
       <>
-        <p>Sign in as {email}</p>
+        <p>Sign in as {user.email}</p>
+        {/* {console.log(pd)} */}
         <Link href="/">Go back</Link>
 
         <button
           className="p-2 bg-red-500 text-white rounded-md"
-          onClick={() => signOut({ redirect: false })}
+          onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
         >
           Sign Out
         </button>
